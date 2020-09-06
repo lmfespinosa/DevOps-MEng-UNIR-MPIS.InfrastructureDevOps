@@ -6,7 +6,7 @@ pool:
 
 variables:
 - group: COMMON
-- system_accesstoken: $(System.AccessToken)
+
 
 stages:
 
@@ -19,7 +19,9 @@ stages:
     displayName: Create Azure resources for Terraform
 
     steps:
-
+    - checkout: self
+      persistCredentials: true
+      
     - task: PowerShell@2
       inputs:
       targetType: inline
