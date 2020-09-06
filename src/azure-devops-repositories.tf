@@ -43,8 +43,8 @@ initialization {
  
 }
 
-resource "azuredevops_git_repository" "repository" {
-  project_id = azuredevops_project.project.id
+resource "azuredevops_git_repository" "infrastructure_repository" {
+  project_id = data.azuredevops_project.project.id
   name       = "MPIS.Infrastructure"
 
 initialization {
