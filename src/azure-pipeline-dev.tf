@@ -3,6 +3,8 @@ resource "azuredevops_build_definition" "build-dev" {
   name       = "Terraform-CI-CD-dev"
   path       = "\\Pipelines-Dev"
 
+  depends_on = [null_resource.clone_infrastructure_repo]
+
   ci_trigger {
     use_yaml = true
   }
