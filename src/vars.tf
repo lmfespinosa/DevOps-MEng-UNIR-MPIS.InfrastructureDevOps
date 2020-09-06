@@ -12,6 +12,11 @@ variable "org_service_url" {
     default         = "__orgserviceurl__"
 }
 
+variable "org_user" {
+    type            = string
+    default         = "__orguser__"
+}
+
 #commmon tags
 variable "azure_location" {
     type            = string
