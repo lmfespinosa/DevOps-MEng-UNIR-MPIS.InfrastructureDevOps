@@ -17,6 +17,11 @@ variable "org_user" {
     default         = "__orguser__"
 }
 
+variable "pat_devops" {
+    type            = string
+    default         = "__personalaccesstoken__"
+}
+
 #commmon tags
 variable "azure_location" {
     type            = string

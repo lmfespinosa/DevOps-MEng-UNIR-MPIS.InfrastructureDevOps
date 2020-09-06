@@ -16,9 +16,9 @@ resource "azuredevops_build_definition" "build-dev" {
     yml_path    = "terraform-pipeline.yml"
   }
 
-  variable_groups = [
-    data.azuredevops_variable_group.var_group_common.id
-  ]
+  # variable_groups = [
+  #   azuredevops_variable_group.var_group_common.id
+  # ]
 
   variable {
     name  = "azuresubscriptionid"
