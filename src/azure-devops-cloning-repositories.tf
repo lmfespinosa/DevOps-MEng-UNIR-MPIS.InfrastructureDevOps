@@ -32,7 +32,7 @@ resource "null_resource" "clone_agent_repo" {
         command = "git clone https://github.com/lmfespinosa/DevOps-MEng-UNIR-MPIS.InventoryAgent && cd DevOps-MEng-UNIR-MPIS.InventoryAgent && git branch -a && git checkout master && git fetch --tags && git tag && git branch -a && git remote rm origin && git remote add origin ${var.org_service_url}/${data.azuredevops_project.project}/_git/MPIS.InventoryAgent && git pull --allow-unrelated-histories origin master && git push --set-upstream origin master && cd .. && rmdir /s /Q DevOps-MEng-UNIR-MPIS.InventoryAgent"
     }
 
-    depends_on = [data.azuredevops_project.project, azuredevops_git_repository.spa_repository]
+    depends_on = [data.azuredevops_project.project, azuredevops_git_repository.agent_repository]
 }
 
 resource "null_resource" "clone_infrastructure_repo" {
@@ -44,6 +44,6 @@ resource "null_resource" "clone_infrastructure_repo" {
         command = "git clone https://github.com/lmfespinosa/DevOps-MEng-UNIR-MPIS.InfrastructureDevOps && cd DevOps-MEng-UNIR-MPIS.InfrastructureDevOps && git branch -a && git checkout master && git fetch --tags && git tag && git branch -a && git remote rm origin && git remote add origin ${var.org_service_url}/${data.azuredevops_project.project}/_git/MPIS.InfrastructureDevOps && git pull --allow-unrelated-histories origin master && git push --set-upstream origin master && cd .. && rmdir /s /Q DevOps-MEng-UNIR-MPIS.InfrastructureDevOps"
     }
 
-    depends_on = [azuredevops_project.project]
+    depends_on = [data.azuredevops_project.project, azuredevops_git_repository.infrastructure_repository]
 }
 
