@@ -21,17 +21,17 @@ stages:
     steps:
     - checkout: self
       persistCredentials: true
-      
-    - task: PowerShell@2
-      inputs:
-      targetType: inline
-      script: |
-          $url = "$($env:SYSTEM_TEAMFOUNDATIONCOLLECTIONURI)$env:SYSTEM_TEAMPROJECTID/_apis/build/definitions/$($env:SYSTEM_DEFINITIONID)?api-version=5.0"
-          Write-Host "URL: $url"
-          $pipeline = Invoke-RestMethod -Uri $url -Headers @{
-              Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
-          }
-          Write-Host "Pipeline = $($pipeline | ConvertTo-Json -Depth 100)"
+
+    # - task: PowerShell@2
+    #   inputs:
+    #     targetType: inline
+    #     script: |
+    #         $url = "$($env:SYSTEM_TEAMFOUNDATIONCOLLECTIONURI)$env:SYSTEM_TEAMPROJECTID/_apis/build/definitions/$($env:SYSTEM_DEFINITIONID)?api-version=5.0"
+    #         Write-Host "URL: $url"
+    #         $pipeline = Invoke-RestMethod -Uri $url -Headers @{
+    #             Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
+    #         }
+    #         Write-Host "Pipeline = $($pipeline | ConvertTo-Json -Depth 100)"
 
     - task: AzureCLI@2
       displayName: Create Azure resources for Terraform
