@@ -17,7 +17,7 @@ resource "azuredevops_build_definition" "build-dev" {
   }
 
   variable_groups = [
-    azuredevops_variable_group.vars.id
+    data.azuredevops_variable_group.var_group_common.id
   ]
 
   variable {
