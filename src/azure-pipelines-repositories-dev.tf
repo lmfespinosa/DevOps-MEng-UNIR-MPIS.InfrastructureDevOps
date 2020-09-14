@@ -158,7 +158,7 @@ resource "azuredevops_build_definition" "build-device-dev" {
 
    variable {
      name      = "functiontestdevicemasterkey"
-     value     = "$(FUNCTION_DEVICE_MASTER_KEY_${upper(var.environment)})"
+     value     = "$(FUNCTION_TEST_DEVICE_MASTER_KEY_${upper(var.environment)})"
      is_secret = false
    }
 }
