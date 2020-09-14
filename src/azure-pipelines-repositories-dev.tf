@@ -94,6 +94,42 @@ resource "azuredevops_build_definition" "build-user-dev" {
     yml_path    = "user-pipeline.yml"
   }
 
+  variable {
+    name      = "azuresubscriptionid"
+    value     = "$(AZURE_SUSCRIPTION_ID)"
+    is_secret = false
+  }
+
+  variable {
+    name      = "resourcegroup"
+    value     = "$(RESOURCE_GROUP_${upper(var.environment)})"
+    is_secret = false
+  }
+
+   variable {
+     name      = "topicuserid"
+     value     = "$(EVENT_GRID_USER_TOPIC_ID_${upper(var.environment)})"
+     is_secret = false
+   }
+
+   variable {
+     name      = "functiondevicename"
+     value     = "$(FUNCTION_DEVICE_NAME_${upper(var.environment)})"
+     is_secret = false
+   }
+
+   variable {
+     name      = "urlfunctiontestuserhost"
+     value     = "$(FUNCTION_TEST_USER_HOSTNAME_${upper(var.environment)})"
+     is_secret = false
+   }
+
+   variable {
+     name      = "functiontestusermasterkey"
+     value     = "$(FUNCTION_TEST_USER_MASTER_KEY_${upper(var.environment)})"
+     is_secret = false
+   }
+
 }
 
 resource "azuredevops_build_definition" "build-device-dev" {
@@ -114,4 +150,15 @@ resource "azuredevops_build_definition" "build-device-dev" {
     yml_path    = "device-pipeline.yml"
   }
 
+   variable {
+     name      = "urlfunctiontestdevicehost"
+     value     = "$(FUNCTION_TEST_DEVICE_HOSTNAME_${upper(var.environment)})"
+     is_secret = false
+   }
+
+   variable {
+     name      = "functiontestdevicemasterkey"
+     value     = "$(FUNCTION_DEVICE_MASTER_KEY_${upper(var.environment)})"
+     is_secret = false
+   }
 }
